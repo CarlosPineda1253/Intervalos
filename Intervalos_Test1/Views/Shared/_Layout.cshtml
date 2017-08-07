@@ -1,0 +1,39 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Intervalos_Test1</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/materialize.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/materialize.min.css" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    </environment>
+    @Html.Raw(JavaScriptSnippet.FullScript)
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+    <environment names="Development">
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="~/js/intervals.js"></script>
+        <script src="~/js/materialize.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="~/js/intervals.js"></script>
+        <script src="~/js/materialize.min.js"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
